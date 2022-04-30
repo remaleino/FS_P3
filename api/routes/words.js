@@ -1,9 +1,10 @@
+//Ladataan tarvittavat lisäosat.
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Word = require('../models/word');
 
-//Hae kaikki tietokannan arvojoukot
+//Haetaan kaikki tietokannan arvojoukot.
 router.get('/', (req, res, next) => {
     Word.find().exec().then(doc => {
         console.log(doc);
@@ -76,4 +77,5 @@ router.delete('/:wordID', (req, res, next) => {
         res.status(500).json({ error: err });
     });
 });
+//Viedän nykyinen moduuli käyttöön.
 module.exports = router;
